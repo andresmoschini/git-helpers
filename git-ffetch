@@ -1,14 +1,23 @@
 #!/bin/sh
-git fetch upstream
 
-git checkout -B qa
-git reset --hard upstream/qa
-git tfs fetch -i qa
+remote='upstream'
+branchesTfs=('qa' 'integration' 'default')
+branchesRemote=('qa' 'integration' 'develop')
+branchesLocal=('qa' 'integration' 'develop')
 
-git checkout -B integration
-git reset --hard upstream/integration
-git tfs fetch -i integration
+echo Fetching $remote...
+git fetch $remote
+echo.
 
-git checkout -B develop
-git reset --hard upstream/develop
-git tfs fetch -i default
+echo Disregard uncommitted changes
+for (( i=0; i<${#branchesTfs[@]}; i++ ))
+do
+	echo Reseting local branch ${branchesLocal[i]} to $remote/${branchesRemote[i]}...
+	git checkout -B ${branchesLocal[i]}
+	git reset --hard $remote/${branchesRemote[i]}
+	echo.
+	
+	echo Fetching ${branchesTfs[i]} from TFS...
+	git tfs fetch -i ${branchesTfs[i]}
+	echo.
+done
