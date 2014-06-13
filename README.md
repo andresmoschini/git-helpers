@@ -5,6 +5,20 @@ Git Helpers
 
 _git-helpers_ intents to be a set of helper commands and utilities to simplify to working with MakingSense flows.
 
+## Configure it in your computer
+
+1. Get the files using git in order to allow you to get future updates easily.
+
+   ```
+   git clone --recursive https://github.com/MakingSense/git-helpers.git
+   ```
+
+2. Add `git-helpers` folder to path
+
+3. Ensure to close all Console process or restar your computer
+
+4. Enjoy
+
 ## Git commands
 
 ### ffetch
