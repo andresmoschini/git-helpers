@@ -1,5 +1,5 @@
 #!/bin/sh
-git fetch upstream
+git fetch --all
 
 git checkout -B qa
 git reset --hard upstream/qa
