@@ -5,6 +5,9 @@
 # Fetch all git remotes
 git fetch --all
 
+# Backup uncommitted changes, including index, untracked files and ignored ones
+git stash save --all "WIP before FFETCH calling"
+
 # Checkout a new (or not) temporal branch
 git checkout -B __FFETCH_AUX
 
@@ -23,3 +26,6 @@ git tfs fetch -i default
 # Restore the previous branch and delete temporal one
 git checkout -
 git branch -D __FFETCH_AUX
+
+# Restore uncommitted backed files
+git stash pop

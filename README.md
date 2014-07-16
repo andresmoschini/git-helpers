@@ -31,10 +31,6 @@ It is useful to mitigate a _git-tfs_ issue that generates duplicated commits: [#
 git ffetch
 ```
 
-#### Warnings
-
-* It reset all not committed changes
-
 #### Limitations
 
 * Upstream remote should be named `upstream`
