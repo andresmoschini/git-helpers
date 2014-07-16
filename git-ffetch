@@ -5,8 +5,8 @@
 # Fetch all git remotes
 git fetch --all
 
-# Backup uncommitted changes, including index, untracked files and ignored ones
-git stash save --all "WIP before FFETCH calling"
+# Backup uncommitted changes, including index and untracked files. It does not backup ignored files.
+git stash save --include-untracked "WIP before FFETCH calling"
 
 # Checkout a new (or not) temporal branch
 git checkout -B __FFETCH_AUX
