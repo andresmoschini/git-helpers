@@ -1,14 +1,13 @@
 #!/bin/sh
 git fetch --all
 
-git checkout -B qa
+git checkout -B __FFETCH_AUX
+
 git reset --hard upstream/qa
 git tfs fetch -i qa
 
-git checkout -B integration
 git reset --hard upstream/integration
 git tfs fetch -i integration
 
-git checkout -B develop
 git reset --hard upstream/develop
 git tfs fetch -i default
