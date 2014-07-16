@@ -1,17 +1,25 @@
 #!/bin/sh
+## Workaround for git-tfs bug
+## see https://github.com/git-tfs/git-tfs/issues/576
+
+# Fetch all git remotes
 git fetch --all
 
+# Checkout a new (or not) temporal branch
 git checkout -B __FFETCH_AUX
 
+# Reset to upstream/qa and fetch tfs/qa
 git reset --hard upstream/qa
 git tfs fetch -i qa
 
+# Reset to upstream/integration and fetch tfs/integration
 git reset --hard upstream/integration
 git tfs fetch -i integration
 
+# Reset to upstream/develop and fetch tfs/default
 git reset --hard upstream/develop
 git tfs fetch -i default
 
+# Restore the previous branch and delete temporal one
 git checkout -
 git branch -D __FFETCH_AUX
-
