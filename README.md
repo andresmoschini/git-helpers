@@ -31,14 +31,8 @@ It is useful to mitigate a _git-tfs_ issue that generates duplicated commits: [#
 git ffetch
 ```
 
-#### Warnings
-
-* It reset all not committed changes
-* It reset `develop`, `integration` and `qa` branches to `upstream` commits, losing any other commit.
-
 #### Limitations
 
-* After finish it does not restore HEAD to previous branch, it sets HEAD to `develop`
 * Upstream remote should be named `upstream`
 * Branches `develop`, `integration` and `qa` should exist on `upstream`
 * TFS remotes should be `tfs/default`, `tfs/integration` and `tfs/qa`
