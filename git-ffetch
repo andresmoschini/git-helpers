@@ -11,3 +11,7 @@ git tfs fetch -i integration
 
 git reset --hard upstream/develop
 git tfs fetch -i default
+
+git checkout -
+git branch -D __FFETCH_AUX
+
