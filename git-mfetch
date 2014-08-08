@@ -21,9 +21,9 @@ git tfs fetch -i qa
 git reset --hard upstream/develop
 git tfs fetch -i default
 
-# Reset to upstream/migration and fetch tfs/branch/migration
-git reset --hard upstream/migration
-git tfs fetch -i migration
+# Reset to upstream/dspmigration and fetch tfs/branch/dspmigration
+git reset --hard upstream/dspmigration
+git tfs fetch -i dspmigration
 
 # Restore the previous branch and delete temporal one
 git checkout -
