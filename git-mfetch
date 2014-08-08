@@ -1,0 +1,33 @@
+#!/bin/sh
+## Workaround for git-tfs bug
+## see https://github.com/git-tfs/git-tfs/issues/576
+##
+## This script is designed to be used in a particular case
+
+# Fetch all git remotes
+git fetch --all
+
+# Backup uncommitted changes, including index and untracked files. It does not backup ignored files.
+git stash save --include-untracked "WIP before MFETCH calling"
+
+# Checkout a new (or not) temporal branch
+git checkout -B __MFETCH_AUX
+
+# Reset to upstream/qa and fetch tfs/qa
+git reset --hard upstream/qa
+git tfs fetch -i qa
+
+# Reset to upstream/develop and fetch tfs/default
+git reset --hard upstream/develop
+git tfs fetch -i default
+
+# Reset to upstream/migration and fetch tfs/branch/migration
+git reset --hard upstream/migration
+git tfs fetch -i migration
+
+# Restore the previous branch and delete temporal one
+git checkout -
+git branch -D __MFETCH_AUX
+
+# Restore uncommitted backed files
+git stash pop
