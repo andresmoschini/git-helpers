@@ -1,0 +1,5 @@
+#!/bin/sh
+## Workaround for git-tfs bug
+## see https://github.com/git-tfs/git-tfs/issues/576
+
+git tfsfetch qa qa
